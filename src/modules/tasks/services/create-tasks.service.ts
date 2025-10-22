@@ -3,7 +3,7 @@ import KSUID from "ksuid";
 import { PrismaService } from "src/infra/database/database.service";
 interface CreateTaskRequest {
     title: string;
-    description: string;
+    description?: string;
 }
 
 @Injectable()

@@ -1,5 +1,4 @@
 import { Injectable } from "@nestjs/common";
-import KSUID from "ksuid";
 import { PrismaService } from "src/infra/database/database.service";
 
 
@@ -7,7 +6,7 @@ import { PrismaService } from "src/infra/database/database.service";
 export class GetTasksService {
     constructor(private readonly prismaService: PrismaService) { }
     async execute() { 
-    const task = await this.prismaService.tasks.findMany({ });
+    const task = await this.prismaService.tasks.findMany({ where: { deletedAt: null } });
     return task;
     }
 }
